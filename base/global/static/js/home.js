@@ -1,21 +1,21 @@
-// document.getElementById('searchForm').addEventListener('submit', function(event) {
-//     event.preventDefault(); 
-//     const searchQuery = document.getElementById('movieTitle').value;
-//     if (searchQuery.trim() !== '') {window.onload = function() {
-// };
-//         window.location.href = 'pesquisa.html?search=' + encodeURIComponent(searchQuery);
-//     }
-// });
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    const searchQuery = document.getElementById('movieTitle').value;
+    if (searchQuery.trim() !== '') {window.onload = function() {
+};
+        window.location.href = 'pesquisa.html?search=' + encodeURIComponent(searchQuery);
+    }
+});
 
-// document.getElementById('movieTitle').addEventListener('keydown', function(event) {
-//     if (event.key === 'Enter') {
-//         document.getElementById('searchForm').submit();
-//     }
-// });
+document.getElementById('movieTitle').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('searchForm').submit();
+    }
+});
 
-// function homeClick() {
-//     scrollToTop()
-// }
+function homeClick() {
+    scrollToTop()
+}
 
 $(document).ready(function () {
     const apiKey = 'e684ab1ca25ce9861ccd1c17032e82e6';

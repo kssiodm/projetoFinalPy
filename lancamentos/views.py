@@ -1,14 +1,14 @@
 from django.shortcuts import render
 
 # Create your views here.
-def home(request):
-    print('Home')
+def lancamentos(request):
+    print('lancamentos')
     
     context = {
-        'conteudo': 'home'
+        'conteudo': 'lancamentos'
     }
     return render(
         request,
-        'home/index.html',
+        'lancamentos/index.html',
         context,
     )
