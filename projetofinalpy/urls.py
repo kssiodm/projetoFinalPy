@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('lancamentos.urls')),
     path('', include('popular.urls')),
     path('', include('listas.urls')),
+    path('', include('pesquisa.urls')),
     path('admin/', admin.site.urls),
 ]

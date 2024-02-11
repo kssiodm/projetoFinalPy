@@ -1,11 +1,25 @@
+// document.getElementById('searchForm').addEventListener('submit', function(event) {
+//     event.preventDefault(); 
+//     const searchQuery = document.getElementById('movieTitle').value;
+//     if (searchQuery.trim() !== '') {window.onload = function() {
+//     var btnHome = document.getElementById("btn-home");
+//     btnHome.classList.add("nav-link-active");
+// };
+//         window.location.href = 'pesquisa.html?search=' + encodeURIComponent(searchQuery);
+//     }
+// });
+
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); 
     const searchQuery = document.getElementById('movieTitle').value;
-    if (searchQuery.trim() !== '') {window.onload = function() {
-    var btnHome = document.getElementById("btn-home");
-    btnHome.classList.add("nav-link-active");
-};
-        window.location.href = 'pesquisa.html?search=' + encodeURIComponent(searchQuery);
+    
+    if (searchQuery.trim() !== '') {
+        // Construa a URL de redirecionamento para o seu aplicativo Django
+        const djangoAppURL = '/pesquisa/';  // Use a URL definida no seu arquivo urls.py
+        const redirectURL = `${djangoAppURL}?search=${encodeURIComponent(searchQuery)}`;
+
+        // Redirecione para a URL construída
+        window.location.href = redirectURL;
     }
 });
 
