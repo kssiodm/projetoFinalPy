@@ -5,7 +5,9 @@ def popular(request):
     print('popular')
     
     context = {
-        'conteudo': 'popular'
+        'title' : 'popular',
+        'ativado_pop': 'active',
+        'conteudo': 'popular',
     }
     return render(
         request,

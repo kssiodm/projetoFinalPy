@@ -5,7 +5,9 @@ def lancamentos(request):
     print('lancamentos')
     
     context = {
-        'conteudo': 'lancamentos'
+        'title' : 'lancamentos',
+        'ativado_news': 'active',
+        'conteudo': 'lancamentos',
     }
     return render(
         request,

@@ -5,7 +5,9 @@ def home(request):
     print('Home')
     
     context = {
-        'conteudo': 'home'
+        'title' : 'home',
+        'ativado': 'active',
+        'conteudo': 'home',
     }
     return render(
         request,

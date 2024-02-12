@@ -5,7 +5,9 @@ def listas(request):
     print('listas')
     
     context = {
-        'conteudo': 'listas'
+        'title' : 'listas',
+        'ativado_list': 'active',
+        'conteudo': 'listas',
     }
     return render(
         request,
