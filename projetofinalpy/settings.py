@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'popular',
     'listas',
     'pesquisa',
+    'login',
+    'cadastro',
 ]
 
 MIDDLEWARE = [

@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('popular.urls')),
     path('', include('listas.urls')),
     path('', include('pesquisa.urls')),
+    path('', include('login.urls')),
     path('admin/', admin.site.urls),
 ]

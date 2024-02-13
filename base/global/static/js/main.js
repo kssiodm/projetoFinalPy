@@ -448,5 +448,5 @@ function scrollToTop() {
 }
 
 function redirecionarParaPagina() {
-    window.location.href = 'login.html';
+    window.location.href = '/login/';  
 }
