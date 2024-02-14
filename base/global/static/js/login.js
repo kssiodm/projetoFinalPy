@@ -38,5 +38,5 @@ function validarSenha(senha) {
 
 function redirecionarParaHome() {
     console.log('Redirecionando para a página inicial...');
-    window.location.href = 'index.html';
+    window.location.href = '/home/'
 }

@@ -24,5 +24,8 @@ urlpatterns = [
     path('', include('listas.urls')),
     path('', include('pesquisa.urls')),
     path('', include('login.urls')),
+    path('', include('cadastro.urls')),
+    path('', include('contato.urls')),
+    path('', include('faq.urls')),
     path('admin/', admin.site.urls),
 ]

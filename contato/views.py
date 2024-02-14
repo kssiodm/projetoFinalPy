@@ -1,15 +1,15 @@
 from django.shortcuts import render
 
 # Create your views here.
-def cadastro(request):
-    print('cadastro')
+def contato(request):
+    print('contato')
     
     context = {
-        'title' : 'cadastro',
-        'conteudo': 'cadastro',
+        'title' : 'contato',
+        'conteudo': 'contato',
     }
     return render(
         request,
-        'cadastro/index.html',
+        'contato/index.html',
         context,
     )
