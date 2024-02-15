@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'lancamentos',
     'popular',
     'listas',
+    'titulo',
     'pesquisa',
     'login',
     'cadastro',

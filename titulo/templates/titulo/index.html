@@ -1,0 +1,30 @@
+{% extends "global/base.html" %}
+
+{% load static %}
+
+{% block title %}Titulo{% endblock title %}
+
+{% block conteudo  %}
+    <div id="results">
+        {% for result in results %}
+            <div class="result">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ result.imageUrl }}" alt="{{ result.title }} Poster" class="d-block w-100 rounded">
+                    </div>
+                    <div class="col-md-8">
+                        <h2>{{ result.title }}</h2>
+                        <p>{{ result.overview }}</p>
+                        <div class="streaming-logos-horizontal">
+                            {{ result.streamingLogosElement|safe }}
+                        </div>
+                        <div class="streaming-names-list">
+                            <p><strong>Disponível em:</strong></p>
+                            {{ result.streamingNamesList|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endblock conteudo  %}
