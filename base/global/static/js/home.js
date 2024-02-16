@@ -85,7 +85,9 @@ $(document).ready(function () {
                 const mediaImage = $('<img>').attr('src', 'https://image.tmdb.org/t/p/w500' + item.poster_path);
     
                 mediaImage.click(function () {
-                    redirectToDjangoApp(item.id, item.media_type);
+                    const itemName = item.title || item.name;
+
+                    window.location.href = '/pesquisa/?search=' + encodeURIComponent(itemName)
                 });
                 
     
@@ -105,12 +107,6 @@ $(document).ready(function () {
             chunkedArr.push(array.slice(i, i + size));
         }
         return chunkedArr;
-    }
-
-    function redirectToDjangoApp(mediaId, mediaType) {
-        const djangoAppUrl = '/titulo/';  // Substitua 'URL_DO_SEU_APP_DJANGO' pela URL real do seu app Django
-        const finalUrl = `${djangoAppUrl}?id=${mediaId}${mediaType ? `&type=${mediaType}` : ''}`;
-        window.location.href = finalUrl;
     }
 
     getTopRatedMedia();

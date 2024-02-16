@@ -89,7 +89,7 @@ $(document).ready(function () {
                         
                         const itemName = item.title || item.name;
 
-                        window.location.href = 'pesquisa.html?search=' + encodeURIComponent(itemName);
+                        window.location.href = '/pesquisa/?search=' + encodeURIComponent(itemName)
                     });
     
                     mediaCard.append(mediaImage);
