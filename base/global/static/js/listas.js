@@ -27,6 +27,45 @@ document.getElementById('movieTitle').addEventListener('keydown', function(event
     }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const watchLaterList = document.getElementById('watch-later-list');
+    const customLists = document.getElementById('custom-lists');
+    const createListBtn = document.getElementById('create-list-btn');
+    const createListModal = document.getElementById('create-list-modal');
+    const closeBtn = document.querySelector('.close');
+    const createListConfirmBtn = document.getElementById('create-list-confirm');
+    
+    // Função para exibir o modal de criação de lista
+    createListBtn.addEventListener('click', function () {
+        createListModal.style.display = 'block';
+    });
+
+    // Função para fechar o modal
+    closeBtn.addEventListener('click', function () {
+        createListModal.style.display = 'none';
+    });
+
+    // Função para criar uma nova lista personalizada
+    createListConfirmBtn.addEventListener('click', function () {
+        const listName = document.getElementById('list-name').value;
+        const listDescription = document.getElementById('list-description').value;
+
+        // Adicione o código para criar a lista e adicioná-la à seção de listas personalizadas
+
+        // Exemplo de como adicionar um item à lista de assistir mais tarde
+        const li = document.createElement('li');
+        li.textContent = listName;
+        customLists.appendChild(li);
+
+        createListModal.style.display = 'none';
+    });
+
+    // Exemplo de como adicionar um item à lista de assistir mais tarde
+    const watchLaterItem = document.createElement('li');
+    watchLaterItem.textContent = 'Nome do Filme ou Série';
+    watchLaterList.appendChild(watchLaterItem);
+});
+
 // function obterLista() {
 //     const lista = JSON.parse(localStorage.getItem('lista')) || [];
 //     return lista;

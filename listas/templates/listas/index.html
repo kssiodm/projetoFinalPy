@@ -8,6 +8,25 @@
 
 {% block conteudo  %}
     <div class="container" id="listas">
-        
+        <section id="watch-later">
+            <h2>Assistir Mais Tarde</h2>
+            <ul id="watch-later-list"></ul>
+        </section>
+
+        <section id="custom-lists">
+            <h2>Listas Personalizadas</h2>
+            <button id="create-list-btn">Criar Lista +</button>
+            <div id="create-list-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <label for="list-name">Nome da Lista:</label>
+                    <input type="text" id="list-name" placeholder="Digite o nome da lista">
+                    <label for="list-description">Descrição (opcional):</label>
+                    <textarea id="list-description" placeholder="Digite uma descrição"></textarea>
+                    <button id="create-list-confirm">Criar Lista</button>
+                </div>
+            </div>
+            <ul id="custom-lists"></ul>
+        </section>
     </div>
 {% endblock conteudo  %}
