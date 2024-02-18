@@ -27,125 +27,58 @@ document.getElementById('movieTitle').addEventListener('keydown', function(event
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const watchLaterList = document.getElementById('watch-later-list');
-    const customLists = document.getElementById('custom-lists');
-    const createListBtn = document.getElementById('create-list-btn');
-    const createListModal = document.getElementById('create-list-modal');
-    const closeBtn = document.querySelector('.close');
-    const createListConfirmBtn = document.getElementById('create-list-confirm');
+const watchLaterList = ["Filme 1", "Série 1"];
+const customLists = [];
+
+function showCreateListForm() {
+    const createListForm = document.getElementById("create-list-form");
+  
+    // Verificar se o elemento foi encontrado antes de tentar acessar a propriedade style
+    if (createListForm) {
+      createListForm.style.display = "block";
+    } else {
+      console.error("Elemento 'create-list-form' não encontrado.");
+    }
+}
+
+function createCustomList() {
+  const listName = document.getElementById("list-name").value;
+  const listDescription = document.getElementById("list-description").value;
+
+  if (listName) {
+    const newList = { name: listName, description: listDescription, items: [] };
+    customLists.push(newList);
+    displayCustomLists();
+    clearCreateListForm();
+  }
+}
+
+function displayCustomLists() {
+  const customListsSection = document.getElementById("custom-lists");
+  customListsSection.innerHTML = "<h2>Minhas Listas Personalizadas</h2>";
+
+  customLists.forEach((list) => {
+    const listContainer = document.createElement("div");
+    listContainer.innerHTML = `<h3>${list.name}</h3>`;
     
-    // Função para exibir o modal de criação de lista
-    createListBtn.addEventListener('click', function () {
-        createListModal.style.display = 'block';
-    });
+    if (list.description) {
+      listContainer.innerHTML += `<p>${list.description}</p>`;
+    }
 
-    // Função para fechar o modal
-    closeBtn.addEventListener('click', function () {
-        createListModal.style.display = 'none';
-    });
+    // Adicione aqui a lógica para exibir os filmes e séries da lista
+    // Exemplo: list.items.forEach(item => console.log(item));
 
-    // Função para criar uma nova lista personalizada
-    createListConfirmBtn.addEventListener('click', function () {
-        const listName = document.getElementById('list-name').value;
-        const listDescription = document.getElementById('list-description').value;
+    customListsSection.appendChild(listContainer);
+  });
 
-        // Adicione o código para criar a lista e adicioná-la à seção de listas personalizadas
+  customListsSection.innerHTML += `<button onclick="showCreateListForm()">+</button>`;
+}
 
-        // Exemplo de como adicionar um item à lista de assistir mais tarde
-        const li = document.createElement('li');
-        li.textContent = listName;
-        customLists.appendChild(li);
+function clearCreateListForm() {
+  document.getElementById("list-name").value = "";
+  document.getElementById("list-description").value = "";
+  document.getElementById("create-list-form").style.display = "none";
+}
 
-        createListModal.style.display = 'none';
-    });
-
-    // Exemplo de como adicionar um item à lista de assistir mais tarde
-    const watchLaterItem = document.createElement('li');
-    watchLaterItem.textContent = 'Nome do Filme ou Série';
-    watchLaterList.appendChild(watchLaterItem);
-});
-
-// function obterLista() {
-//     const lista = JSON.parse(localStorage.getItem('lista')) || [];
-//     return lista;
-// }
-
-// function obterAssistirMaisTarde() {
-//     const assistirMaisTarde = JSON.parse(localStorage.getItem('assistirMaisTarde')) || [];
-//     return assistirMaisTarde;
-// }
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const lista = obterLista();
-//     renderizarLista(lista, 'listaContainer');
-
-//     const assistirMaisTarde = obterAssistirMaisTarde();
-//     renderizarLista(assistirMaisTarde, 'assistirMaisTardeContainer');
-// });
-
-// renderizarLista(['Item 1', 'Item 2'], 'listaContainer');
-// renderizarLista(['Assistir Mais Tarde 1', 'Assistir Mais Tarde 2'], 'assistirMaisTardeContainer');
-
-// function renderizarLista(lista, containerId) {
-//     const container = document.getElementById(containerId);
-
-//     if (!container) {
-//         console.error(`Elemento com o ID '${containerId}' não encontrado.`);
-//         return;
-//     }
-
-//     container.innerHTML = ''; 
-
-//     if (lista.length === 0) {
-//         container.innerHTML = '<p>Nenhum item na lista.</p>';
-//         return;
-//     }
-
-//     container.innerHTML = lista.map(item => `<li>${item}</li>`).join('');
-// }
-
-// function renderizarLista(lista, containerId) {
-//     const container = document.getElementById(containerId);
-
-//     if (!container) {
-//         console.error(`Elemento com o ID '${containerId}' não encontrado.`);
-//         return;
-//     }
-
-//     container.innerHTML = ''; 
-
-//     if (lista.length === 0) {
-//         container.innerHTML = '<p>Nenhum item na lista.</p>';
-//         return;
-//     }
-
-//     lista.forEach(item => {
-//         if (item && item.poster_path) {
-//             const listItem = document.createElement('li'); 
-//             listItem.className = 'list-inline-item'; 
-
-//             const mediaCard = document.createElement('div');
-//             mediaCard.className = 'media-card';
-
-//             const posterImg = document.createElement('img');
-//             posterImg.src = `https://image.tmdb.org/t/p/w500${item.poster_path}`; 
-//             posterImg.alt = item.title || item.name || 'Poster'; 
-
-//             posterImg.addEventListener('click', function () {
-//                 const itemName = item.title || item.name;
-//                 window.location.href = 'pesquisa.html?search=' + encodeURIComponent(itemName);
-//             });
-
-//             mediaCard.appendChild(posterImg);
-//             listItem.appendChild(mediaCard);
-
-//             container.appendChild(listItem);
-//         }
-//     });
-// }
-
-
-
-
-
+// Exemplo de chamada de função para inicializar a exibição
+displayCustomLists();

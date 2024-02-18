@@ -10,23 +10,20 @@
     <div class="container" id="listas">
         <section id="watch-later">
             <h2>Assistir Mais Tarde</h2>
-            <ul id="watch-later-list"></ul>
+            <!-- Aqui serão exibidos os filmes e séries da lista "Assistir Mais Tarde" -->
         </section>
 
         <section id="custom-lists">
-            <h2>Listas Personalizadas</h2>
-            <button id="create-list-btn">Criar Lista +</button>
-            <div id="create-list-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <label for="list-name">Nome da Lista:</label>
-                    <input type="text" id="list-name" placeholder="Digite o nome da lista">
-                    <label for="list-description">Descrição (opcional):</label>
-                    <textarea id="list-description" placeholder="Digite uma descrição"></textarea>
-                    <button id="create-list-confirm">Criar Lista</button>
-                </div>
+            <h2>Minhas Listas Personalizadas</h2>
+            <button onclick="showCreateListForm()">+</button>
+            <div id="create-list-form" style="display:none;">
+                <label for="list-name">Nome da Lista:</label>
+                <input type="text" id="list-name">
+                <label for="list-description">Descrição (opcional):</label>
+                <input type="text" id="list-description">
+                <button onclick="createCustomList()">Criar Lista</button>
             </div>
-            <ul id="custom-lists"></ul>
+            <!-- Aqui serão exibidas as listas personalizadas com seus detalhes -->
         </section>
     </div>
 {% endblock conteudo  %}
