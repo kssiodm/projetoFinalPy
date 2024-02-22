@@ -27,58 +27,43 @@ document.getElementById('movieTitle').addEventListener('keydown', function(event
     }
 });
 
-const watchLaterList = ["Filme 1", "Série 1"];
-const customLists = [];
 
-function showCreateListForm() {
-    const createListForm = document.getElementById("create-list-form");
+function openModal() {
+  document.getElementById('myModal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = 'none';
+  document.getElementById('listForm').reset();
+}
+
+function saveList() {
+  var listName = document.getElementById('listName').value;
+  var listDescription = document.getElementById('listDescription').value;
+
+  // Criar elemento de lista na página
+  var listContainer = document.getElementById('lists-container');
+
+  var newList = document.createElement('div');
+  newList.className = 'list-item';
+  newList.innerHTML = '<h3 class="list-name" onclick="openDetailedModal(\'' + listName + '\', \'' + listDescription + '\')">' + listName + '</h3>';
   
-    // Verificar se o elemento foi encontrado antes de tentar acessar a propriedade style
-    if (createListForm) {
-      createListForm.style.display = "block";
-    } else {
-      console.error("Elemento 'create-list-form' não encontrado.");
-    }
+  listContainer.appendChild(newList);
+
+  // Limpar o formulário e fechar o modal
+  document.getElementById('listForm').reset();
+  $('#myModal').modal('hide');
 }
 
-function createCustomList() {
-  const listName = document.getElementById("list-name").value;
-  const listDescription = document.getElementById("list-description").value;
-
-  if (listName) {
-    const newList = { name: listName, description: listDescription, items: [] };
-    customLists.push(newList);
-    displayCustomLists();
-    clearCreateListForm();
+function openDetailedModal(name, description) {
+  var detailedModalBody = document.getElementById('detailedModalBody');
+  detailedModalBody.innerHTML = '<p><strong>Nome:</strong> ' + name + '</p>';
+  
+  if (description) {
+      detailedModalBody.innerHTML += '<p><strong>Descrição:</strong> ' + description + '</p>';
   }
+
+  // Adicione aqui o conteúdo da lista (filmes, séries, etc.)
+
+  $('#detailedModal').modal('show');
 }
-
-function displayCustomLists() {
-  const customListsSection = document.getElementById("custom-lists");
-  customListsSection.innerHTML = "<h2>Minhas Listas Personalizadas</h2>";
-
-  customLists.forEach((list) => {
-    const listContainer = document.createElement("div");
-    listContainer.innerHTML = `<h3>${list.name}</h3>`;
-    
-    if (list.description) {
-      listContainer.innerHTML += `<p>${list.description}</p>`;
-    }
-
-    // Adicione aqui a lógica para exibir os filmes e séries da lista
-    // Exemplo: list.items.forEach(item => console.log(item));
-
-    customListsSection.appendChild(listContainer);
-  });
-
-  customListsSection.innerHTML += `<button onclick="showCreateListForm()">+</button>`;
-}
-
-function clearCreateListForm() {
-  document.getElementById("list-name").value = "";
-  document.getElementById("list-description").value = "";
-  document.getElementById("create-list-form").style.display = "none";
-}
-
-// Exemplo de chamada de função para inicializar a exibição
-displayCustomLists();

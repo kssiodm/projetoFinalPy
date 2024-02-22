@@ -8,22 +8,58 @@
 
 {% block conteudo  %}
     <div class="container" id="listas">
-        <section id="watch-later">
-            <h2>Assistir Mais Tarde</h2>
-            <!-- Aqui serão exibidos os filmes e séries da lista "Assistir Mais Tarde" -->
-        </section>
 
-        <section id="custom-lists">
-            <h2>Minhas Listas Personalizadas</h2>
-            <button onclick="showCreateListForm()">+</button>
-            <div id="create-list-form" style="display:none;">
-                <label for="list-name">Nome da Lista:</label>
-                <input type="text" id="list-name">
-                <label for="list-description">Descrição (opcional):</label>
-                <input type="text" id="list-description">
-                <button onclick="createCustomList()">Criar Lista</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Criar Lista
+        </button>
+    
+        <!-- Lista Criada -->
+        <div class="list-container" id="lists-container"></div>
+    
+
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+        
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nova Lista</h4>
+                        <button type="button" class="close close-modal-button" data-dismiss="modal">&times;</button>
+                    </div>
+        
+                    <div class="modal-body">
+                        <form id="listForm">
+                            <div class="form-group">
+                                <label for="listName">Nome da Lista:</label>
+                                <input type="text" class="form-control" id="listName" name="listName" required>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="listDescription">Descrição:</label>
+                                <textarea class="form-control" id="listDescription" name="listDescription"></textarea>
+                            </div>
+        
+                            <button type="button" class="btn btn-primary" onclick="saveList()">Salvar Lista</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <!-- Aqui serão exibidas as listas personalizadas com seus detalhes -->
-        </section>
+        </div>
+        
+        <!-- Modal Extra Largo -->
+        <div class="modal fade" id="detailedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content modal-content-extra">
+        
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalhes da Lista</h5>
+                        <button type="button" class="close close-modal-button" data-dismiss="modal">&times;</button>
+                    </div>
+        
+                    <div class="modal-body" id="detailedModalBody">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 {% endblock conteudo  %}
