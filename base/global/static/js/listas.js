@@ -27,6 +27,33 @@ document.getElementById('movieTitle').addEventListener('keydown', function(event
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Lista predefinida: Assistir Mais Tarde
+  createListElement("Assistir Mais Tarde", "Listinha para os próximos filmes e séries a serem assistidos.");
+
+  // Adicionar evento de input para verificar o comprimento do nome da lista
+  var listNameInput = document.getElementById('listName');
+  var saveListButton = document.getElementById('saveListButton');
+
+  if (listNameInput && saveListButton) {
+      listNameInput.addEventListener('input', function () {
+          saveListButton.disabled = listNameInput.value.trim().length === 0;
+      });
+  }
+
+  // ... (restante do código)
+
+  // Função para criar um elemento de lista na página
+  function createListElement(name, description) {
+      var listContainer = document.getElementById('lists-container');
+
+      var newList = document.createElement('div');
+      newList.className = 'list-item';
+      newList.innerHTML = '<h3 class="list-name" onclick="openDetailedModal(\'' + name + '\', \'' + description + '\')">' + name + '</h3>';
+
+      listContainer.appendChild(newList);
+  }
+});
 
 function openModal() {
   document.getElementById('myModal').style.display = 'block';
@@ -35,6 +62,15 @@ function openModal() {
 function closeModal() {
   document.getElementById('myModal').style.display = 'none';
   document.getElementById('listForm').reset();
+}     
+
+function updateSaveButtonState() {
+  var listNameInput = document.getElementById('listName');
+  var saveListButton = document.getElementById('saveListButton');
+
+  if (listNameInput && saveListButton) {
+      saveListButton.disabled = listNameInput.value.trim().length === 0;
+  }
 }
 
 function saveList() {
@@ -62,7 +98,7 @@ function openDetailedModal(name, description) {
   if (description) {
       detailedModalBody.innerHTML += '<p><strong>Descrição:</strong> ' + description + '</p>';
   }
-
+  
   // Adicione aqui o conteúdo da lista (filmes, séries, etc.)
 
   $('#detailedModal').modal('show');

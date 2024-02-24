@@ -225,7 +225,7 @@ function getMovieDetails(movieId, resultElement) {
                             </button>
                         </li>
                         <li class="item_lista bWatch">
-                            <button class="item_lista" id="bWatch" onclick="transformarBotaoplay(this),adicionarOuRemoverAssistirMaisTarde('${details.poster_path}')">
+                            <button class="item_lista" id="bWatch" onclick="adicionarOuRemoverAssistirMaisTarde('${details.poster_path}')">
                                 <i class="bi bi-play-btn"></i>
                             </button>
                         </li>
@@ -284,7 +284,7 @@ function getTVShowDetails(tvShowId, resultElement) {
                         </button>
                     </li>
                     <li class="item_lista">
-                        <button class="item_lista" id="bWatch" onclick="transformarBotaoplay(this)adicionarOuRemoverAssistirMaisTarde('${details.poster_path}')">
+                        <button class="item_lista" id="bWatch" onclick="adicionarOuRemoverAssistirMaisTarde('${details.poster_path}')">
                             <i class="bi bi-play-btn"></i>
                         </button>
                     </li>
@@ -359,6 +359,41 @@ function adicionarOuRemoverAssistirMaisTarde(poster_path, botao) {
     localStorage.setItem('assistirMaisTarde', JSON.stringify(assistirMaisTarde));
     transformarBotaoplay(botao);
 }
+
+// var assistirMaisTardeList = [];
+
+// function adicionarOuRemoverAssistirMaisTarde(posterPath) {
+//     var index = assistirMaisTardeList.indexOf(posterPath);
+
+//     if (index === -1) {
+//         // Se não estiver na lista, adicionar
+//         assistirMaisTardeList.push(posterPath);
+//         console.log('Adicionado à lista Assistir Mais Tarde:', posterPath);
+//     } else {
+//         // Se estiver na lista, remover
+//         assistirMaisTardeList.splice(index, 1);
+//         console.log('Removido da lista Assistir Mais Tarde:', posterPath);
+//     }
+
+//     // Atualizar visualmente a lista Assistir Mais Tarde na interface
+//     atualizarPostersAssistirMaisTarde();
+// }
+
+// function atualizarPostersAssistirMaisTarde() {
+//     var assistirMaisTardePostersDiv = document.getElementById('assistirMaisTardePosters');
+//     assistirMaisTardePostersDiv.innerHTML = '';
+
+//     assistirMaisTardeList.forEach(function (posterPath) {
+//         var posterElement = document.createElement('img');
+//         posterElement.src = 'caminho/para/imagens/' + posterPath; // Substitua pelo caminho real do seu servidor ou API
+//         posterElement.alt = 'Poster do Filme/Série';
+//         posterElement.className = 'poster-thumbnail';
+
+//         assistirMaisTardePostersDiv.appendChild(posterElement);
+//     });
+// }
+
+
 
 function transformarBotaolist(botao) {
     var estaMarcado = botao.classList.contains('checked');
