@@ -27,33 +27,15 @@ document.getElementById('movieTitle').addEventListener('keydown', function(event
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Lista predefinida: Assistir Mais Tarde
-  createListElement("Assistir Mais Tarde", "Listinha para os próximos filmes e séries a serem assistidos.");
+function createListElement(name, description) {
+  var listContainer = document.getElementById('lists-container');
 
-  // Adicionar evento de input para verificar o comprimento do nome da lista
-  var listNameInput = document.getElementById('listName');
-  var saveListButton = document.getElementById('saveListButton');
+  var newList = document.createElement('div');
+  newList.className = 'list-item';
+  newList.innerHTML = '<h3 class="list-name" onclick="openDetailedModal(\'' + name + '\', \'' + description + '\')">' + name + '</h3>';
 
-  if (listNameInput && saveListButton) {
-      listNameInput.addEventListener('input', function () {
-          saveListButton.disabled = listNameInput.value.trim().length === 0;
-      });
-  }
-
-  // ... (restante do código)
-
-  // Função para criar um elemento de lista na página
-  function createListElement(name, description) {
-      var listContainer = document.getElementById('lists-container');
-
-      var newList = document.createElement('div');
-      newList.className = 'list-item';
-      newList.innerHTML = '<h3 class="list-name" onclick="openDetailedModal(\'' + name + '\', \'' + description + '\')">' + name + '</h3>';
-
-      listContainer.appendChild(newList);
-  }
-});
+  listContainer.appendChild(newList);
+}
 
 function openModal() {
   document.getElementById('myModal').style.display = 'block';
@@ -74,22 +56,38 @@ function updateSaveButtonState() {
 }
 
 function saveList() {
-  var listName = document.getElementById('listName').value;
-  var listDescription = document.getElementById('listDescription').value;
+  var listNameInput = document.getElementById('listName');
+  var listName = listNameInput.value.trim();
 
-  // Criar elemento de lista na página
-  var listContainer = document.getElementById('lists-container');
+  if (listName.length > 0) {
+      var listDescription = document.getElementById('listDescription').value;
 
-  var newList = document.createElement('div');
-  newList.className = 'list-item';
-  newList.innerHTML = '<h3 class="list-name" onclick="openDetailedModal(\'' + listName + '\', \'' + listDescription + '\')">' + listName + '</h3>';
-  
-  listContainer.appendChild(newList);
+      // Criar elemento de lista na página
+      createListElement(listName, listDescription);
 
-  // Limpar o formulário e fechar o modal
-  document.getElementById('listForm').reset();
-  $('#myModal').modal('hide');
+      // Limpar o formulário e fechar o modal
+      document.getElementById('listForm').reset();
+      $('#myModal').modal('hide');
+  } else {
+      // Adicione uma lógica para lidar com o caso em que o nome da lista é vazio
+      
+  }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Lista predefinida: Assistir Mais Tarde
+  createListElement("Assistir Mais Tarde", "Listinha para os próximos filmes e séries a serem assistidos.");
+
+  // Adicionar evento de input para verificar o comprimento do nome da lista
+  var listNameInput = document.getElementById('listName');
+
+  if (listNameInput) {
+      listNameInput.addEventListener('input', updateSaveButtonState);
+  }
+
+  // Chamar a função inicialmente para definir o estado do botão
+  updateSaveButtonState();
+});
 
 function openDetailedModal(name, description) {
   var detailedModalBody = document.getElementById('detailedModalBody');
