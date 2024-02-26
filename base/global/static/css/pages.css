@@ -23,13 +23,17 @@
     color: #fff;
 }
 
-.close-modal-button {
+#close_button{
     background-color: red;
     color: white;
-    border: none;
+    /* border: none; */
     padding: 10px 15px;
     cursor: pointer;
 }
+
+/* #close_button:hover{
+    color: rgb(194, 191, 191);
+} */
 
 #listName, #listDescription{
     background-color: #1f1d1d;
